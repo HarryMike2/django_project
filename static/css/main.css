@@ -1,0 +1,17 @@
+html, body{
+	direction: rtl;
+	text-align: left;
+}
+.section-content{
+	margin-top: 60px;
+}
+.search-body-card{
+	background-color: rgb(249, 244, 241);
+	box-shadow: 1px 1px 1px 1px gray;
+	
+}
+.search-input{
+	
+	align-items: center;
+	font-size: 30px;
+}

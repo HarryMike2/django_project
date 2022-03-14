@@ -1,0 +1,56 @@
+{% extends 'django_app/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+   <div class="container-fluid mt-2">
+
+<div class="row">
+    <div class="container mt-2">
+        <div class="card mt-2">
+        <div class="card-body search-body-card">
+            <form action="{% url 'index' %}" method=POST>
+                {% csrf_token %}
+                <div class="input-group-prepend">
+                 
+                  </div>
+                  <label class="d-grid gap-2 col-6 mx-auto" style="font-size: 20px; align-items: left; "> search by phone number</label>
+                  <input class="d-grid gap-2 col-6 mx-auto search-input" value = "" maxlength = "10" class="form-control" aria-label="search" name="old_customer" >
+                      <hr/>
+               <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" id='searchbtnbutton' class="btn btn-primary btn-lg mt-1">search</button>
+               </div>
+            </form>
+        </div>
+        </div>
+         </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>
+      <a href="{% url 'create' %}"><button class="btn btn-secondry"><h3>add new service</h3></button></a>
+    </span>
+  </div>
+</div>
+<hr/>
+<div class="row mt-3">
+    <h3></h3>
+</div>
+
+
+ <div class="col-xs-2">
+    {% if messages %}
+    <div class="alert alert-primary">
+      {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+     
+     {% endfor %}
+      
+    </div>
+  {% endif %}   
+</div>
+    {% endblock content %}
+   </div>

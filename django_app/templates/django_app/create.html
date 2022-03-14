@@ -1,0 +1,97 @@
+{% extends 'django_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<script>
+    $(document).ready(function()
+    {
+        // class name
+        $('.form-check-input').click(function()
+        {
+
+        // display on text input
+        var txt="";
+        $('.form-check-input:checked').each(function(){
+            txt+=$(this).val()+""
+        });
+        // text value
+        $('#textvalue').val(txt);
+        });
+    });
+</script>
+<div class="container-fluid">
+    <br />
+    <div class="row">
+        <br />
+        <div class="col-lg-12">
+
+            <br />
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                <!-- {{form}} -->
+      
+                  
+      <table>
+          <tr>
+
+            <tr><td>
+            <input class="form-control form-control-lg mb-2" type="text" name="customer_name" value="" placeholder=" Customer Name" > 
+            
+          
+            <input class="form-control form-control-lg" type="text" maxlength = "10" name="customer_phoneNumber" value="" placeholder=" Customer Phone number" > 
+            </td>
+        </tr>
+        <br/>
+            <tr><td>
+                <hr/>
+            {% for images in images %}
+            <img class="mt-5" src="{{images.zabzor_images.url}}">
+            {{images.phote_name}}
+            {% endfor %}
+            <hr/>
+            </td></tr>
+               
+           <tr>
+               <td>
+            <hr>
+       Select :
+<p style="justify-content: center;">
+    <input class="form-check-input"  type="checkbox"  name="A"  value="A"> | A 
+    <input class="form-check-input" type="checkbox"  name="B"  value="B">  | B
+    <input class="form-check-input" type="checkbox"  name="C"  value="C">  | C
+    <input class="form-check-input" type="checkbox"  name="D"  value="D">  | D
+    <input class="form-check-input" type="checkbox"  name="E"  value="E">  | E 
+    <br/>
+    <input type="text" name="service_photo" id='textvalue'>
+</p>
+            <hr>
+            </td>
+        </tr>
+
+          </tr>
+      </table>
+                    
+<br/>
+    <a>
+        <button class="btn btn-secondary mt-5 mb-5" type="submit" value="" id='but1'>تسجيل</button>
+    </a>
+
+            </form>
+
+            <!-- message -->
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    {{ message }}
+                    </li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- message -->
+        </div>
+    </div>
+</div>
+{% endblock %}
